@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#160910">
+  <meta name="description" content="Uma surpresa feita com carinho para uma pessoa muito especial.">
+  <title>Para minha princesa ✨</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+
+    :root {
+      --wine: #7e1835;
+      --rose: #d86382;
+      --blush: #ffd8e2;
+      --cream: #fff8f5;
+      --ink: #26121a;
+      --muted: #715862;
+      --glass: rgba(255,255,255,.08);
+      --line: rgba(255,255,255,.17);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(126,24,53,.4), transparent 32rem),
+        radial-gradient(circle at 85% 55%, rgba(216,99,130,.16), transparent 28rem),
+        #11070c;
+      font-family: Montserrat, sans-serif;
+      overflow-x: hidden;
+    }
+
+    button, a { font: inherit; }
+    button { cursor: pointer; }
+    .grain {
+      position: fixed; inset: 0; pointer-events: none; z-index: 30; opacity: .055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    .stars { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+    .star {
+      position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%;
+      opacity: .45; animation: twinkle 3s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { to { opacity: .08; transform: scale(.5); } }
+
+    .intro {
+      min-height: 100svh; display: grid; place-items: center; padding: 28px;
+      position: relative; isolation: isolate;
+    }
+    .intro::after {
+      content: ""; position: absolute; width: min(78vw, 660px); aspect-ratio: 1;
+      border: 1px solid rgba(255,216,226,.13); border-radius: 50%; z-index: -1;
+      box-shadow: 0 0 100px rgba(126,24,53,.18), inset 0 0 90px rgba(126,24,53,.12);
+      animation: breathe 5s ease-in-out infinite;
+    }
+    @keyframes breathe { 50% { transform: scale(1.035); opacity: .75; } }
+
+    .letter-start { text-align: center; max-width: 680px; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: .28em; font-size: .72rem;
+      color: var(--blush); margin-bottom: 18px;
+    }
+    h1, h2, blockquote { font-family: "Cormorant Garamond", serif; }
+    h1 {
+      font-size: clamp(3.1rem, 10vw, 7.2rem); line-height: .86; margin: 0 0 22px;
+      font-weight: 600; letter-spacing: -.045em;
+    }
+    .intro p { color: #dfc8cf; line-height: 1.75; margin: 0 auto 30px; max-width: 520px; }
+    .open-btn, .final-btn {
+      border: 1px solid rgba(255,216,226,.35); border-radius: 999px;
+      padding: 15px 25px; color: #fff; background: linear-gradient(135deg, #8e1e40, #b63d60);
+      box-shadow: 0 12px 45px rgba(126,24,53,.35);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .open-btn:hover, .final-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 55px rgba(216,99,130,.35); }
+    .open-btn:focus-visible, .final-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+
+    main { display: none; }
+    main.visible { display: block; animation: reveal .9s ease both; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(20px); } }
+
+    section { padding: 110px max(22px, 7vw); }
+    .section-head { max-width: 760px; margin-bottom: 56px; }
+    .number { color: var(--rose); letter-spacing: .18em; font-size: .75rem; text-transform: uppercase; }
+    h2 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: .96; margin: 10px 0 18px; font-weight: 600; }
+    .section-head p { color: #ccb5bd; line-height: 1.8; max-width: 600px; }
+
+    .reasons {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1180px;
+    }
+    .reason {
+      min-height: 250px; padding: 30px; border: 1px solid var(--line); border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+      backdrop-filter: blur(12px); display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .3s, border-color .3s;
+    }
+    .reason:hover { transform: translateY(-7px); border-color: rgba(255,216,226,.42); }
+    .reason span { color: var(--rose); font-family: "Cormorant Garamond", serif; font-size: 2.2rem; }
+    .reason h3 { font-family: "Cormorant Garamond", serif; font-size: 2rem; line-height: 1; margin: 35px 0 10px; }
+    .reason p { color: #cbb6bd; line-height: 1.65; margin: 0; font-size: .92rem; }
+
+    .quote-section {
+      min-height: 75vh; display: grid; place-items: center; text-align: center; position: relative;
+      background: linear-gradient(rgba(17,7,12,.72), rgba(17,7,12,.92)),
+        radial-gradient(circle at center, #761b39, #160910 62%);
+    }
+    blockquote { font-size: clamp(2.5rem, 6.5vw, 6rem); line-height: 1.03; max-width: 1050px; margin: 0; }
+    blockquote em { color: var(--blush); font-style: italic; }
+
+    .timeline { max-width: 850px; margin: auto; position: relative; }
+    .timeline::before { content: ""; position: absolute; left: 19px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(var(--rose), transparent); }
+    .moment { position: relative; padding: 0 0 60px 72px; }
+    .moment::before {
+      content: ""; position: absolute; left: 12px; top: 6px; width: 15px; height: 15px;
+      background: var(--rose); border: 4px solid #220c15; border-radius: 50%; box-shadow: 0 0 0 5px rgba(216,99,130,.18);
+    }
+    .moment small { color: var(--rose); text-transform: uppercase; letter-spacing: .15em; }
+    .moment h3 { font-family: "Cormorant Garamond", serif; font-size: 2.4rem; margin: 8px 0; }
+    .moment p { color: #cbb6bd; line-height: 1.7; margin: 0; }
+
+    .final {
+      min-height: 100svh; display: grid; place-items: center; text-align: center; padding-bottom: 120px;
+    }
+    .final-card {
+      max-width: 760px; padding: clamp(35px, 7vw, 75px); border-radius: 32px;
+      border: 1px solid rgba(255,216,226,.22);
+      background: linear-gradient(145deg, rgba(126,24,53,.23), rgba(255,255,255,.04));
+      box-shadow: 0 30px 100px rgba(0,0,0,.32);
+    }
+    .final-card p { color: #d8c2c9; line-height: 1.9; }
+    .hidden-message {
+      max-height: 0; overflow: hidden; opacity: 0; transition: max-height .8s ease, opacity .8s ease, margin .8s;
+      color: var(--cream) !important; font-family: "Cormorant Garamond", serif; font-size: 1.7rem;
+    }
+    .hidden-message.show { max-height: 450px; opacity: 1; margin-top: 30px; }
+    .signature { color: var(--rose) !important; font-size: .78rem !important; text-transform: uppercase; letter-spacing: .2em; }
+    footer { text-align: center; padding: 25px; color: #90747e; font-size: .76rem; }
+
+    .reveal { opacity: 0; transform: translateY(25px); transition: opacity .8s, transform .8s; }
+    .reveal.on { opacity: 1; transform: none; }
+
+    @media (max-width: 780px) {
+      section { padding-top: 82px; padding-bottom: 82px; }
+      .reasons { grid-template-columns: 1fr; }
+      .reason { min-height: 215px; }
+      .intro::after { width: 90vw; }
+      .moment { padding-left: 58px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header class="intro" id="inicio">
+    <div class="letter-start">
+      <div class="eyebrow">uma surpresa feita especialmente pra vc</div>
+      <h1>Para minha<br>princesa</h1>
+      <p>Tem pessoas q chegam devagar e, sem perceber, deixam tudo mais bonito. Essa página é só uma pequena forma de mostrar o q vc representa.</p>
+      <button class="open-btn" id="open" type="button">Abrir sua surpresa ✦</button>
+    </div>
+  </header>
+
+  <main id="content">
+    <section>
+      <div class="section-head reveal">
+        <span class="number">01 · pequenos detalhes</span>
+        <h2>O q faz vc ser tão especial</h2>
+        <p>N são só os grandes momentos. São os detalhes simples, as conversas e o jeito único q vc transforma um dia comum.</p>
+      </div>
+      <div class="reasons">
+        <article class="reason reveal">
+          <span>✦</span>
+          <div><h3>Sua presença</h3><p>Vc trouxe uma paz diferente pra minha vida e fez td ganhar um novo significado.</p></div>
+        </article>
+        <article class="reason reveal">
+          <span>02</span>
+          <div><h3>Seu jeitinho</h3><p>Eu amo até os detalhes q vc acha simples, pq são exatamente eles q fazem vc ser única.</p></div>
+        </article>
+        <article class="reason reveal">
+          <span>∞</span>
+          <div><h3>Nós dois</h3><p>Entre tantas coincidências do mundo, encontrar vc foi uma das coisas mais lindas q já aconteceu.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <blockquote class="reveal">“Vc virou meu <em>lugar favorito</em> sem nem perceber.”</blockquote>
+    </section>
+
+    <section>
+      <div class="section-head reveal">
+        <span class="number">02 · nossa história</span>
+        <h2>Capítulos q eu guardo cm carinho</h2>
+        <p>Se a vida fosse um livro, esses seriam alguns dos trechos q fazem nossa história ser tão bonita.</p>
+      </div>
+      <div class="timeline">
+        <article class="moment reveal">
+          <small>o começo</small>
+          <h3>Qnd nossas histórias se encontraram</h3>
+          <p>Foi ali q os dias começaram a ter uma energia diferente e uma pessoa especial ganhou espaço na minha vida.</p>
+        </article>
+        <article class="moment reveal">
+          <small>todos os dias</small>
+          <h3>As conversas q viraram lembranças</h3>
+          <p>Cada msg, cada risada e cada momento simples ajudou a construir algo q eu valorizo dms.</p>
+        </article>
+        <article class="moment reveal">
+          <small>daqui pra frente</small>
+          <h3>Os capítulos q ainda vamos escrever</h3>
+          <p>A melhor parte é saber q ainda existem mt momentos, sonhos e memórias esperando pela gente.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="final-card reveal">
+        <span class="number">só mais uma coisa</span>
+        <h2>Essa surpresa é pra vc</h2>
+        <p>Eu agradeço a Deus por vc existir e por ter colocado uma pessoa tão incrível no meu caminho. Vc mudou minha vida sem perceber e tornou mt coisa mais bonita só por estar nela.</p>
+        <button class="final-btn" id="lastMessage" type="button">Ler a última mensagem</button>
+        <p class="hidden-message" id="hiddenMessage">Eu escolheria vc em cada página, em cada capítulo e em qlqr versão da minha vida. Obrigado por ser exatamente quem vc é.</p>
+        <p class="signature">feito cm carinho, especialmente pra vc ✦</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>Para uma pessoa inesquecível · 2026</footer>
+
+  <script>
+    const stars = document.querySelector('.stars');
+    for (let i = 0; i < 45; i++) {
+      const star = document.createElement('i');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.transform = 'scale(' + (.45 + Math.random()) + ')';
+      stars.appendChild(star);
+    }
+
+    const content = document.getElementById('content');
+    document.getElementById('open').addEventListener('click', () => {
+      content.classList.add('visible');
+      setTimeout(() => content.scrollIntoView({ behavior: 'smooth' }), 120);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('on');
+      });
+    }, { threshold: .15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.getElementById('lastMessage').addEventListener('click', (event) => {
+      const message = document.getElementById('hiddenMessage');
+      message.classList.toggle('show');
+      event.currentTarget.textContent = message.classList.contains('show') ? 'Guardar essa mensagem ✦' : 'Ler a última mensagem';
+    });
+  </script>
+</body>
+</html>
